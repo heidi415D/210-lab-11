@@ -8,18 +8,18 @@ struct Album {
     string name;   // album name
     string artist; // album artist
     string *songs; // dynamic array of songs
-    int songCount;
+    int songCount; // number of songs
 };
 
 // Function to create a new album
-Album makeAlbum(string n, string c, int count){
+Album makeAlbum(const string &n, const string &c, int count){
     Album a;
     a.name = n;
     a.artist = c;
     a.songCount = count;
     a.songs = new string[count];
 
-    // filling in songs
+    // get songs from user
     for (int i = 0; i < count; i++){
         cout << "Enter song " << (i + 1) << " by " << c << ": ";
         getline(cin, a.songs[i]);
@@ -27,14 +27,16 @@ Album makeAlbum(string n, string c, int count){
     return a;
 }
 
-// function to print out album 
-void printAlbum(Album &a){
-    cout << "Album: " << a.name << " by " << a.artist << endl;
+// function to print out album and its songs
+void printAlbum(const Album &a){
+    cout << "\nAlbum: " << a.name << " by " << a.artist << endl;
+    cout << "Songs:\n";
     for (int i = 0; i < a.songCount; i++){
-        cout << "   " << a.songs[i] << endl;
+        cout << "   " << (i + 1) << " . " << a.songs[i] << endl;
     }
 }
 
+// free memory allocated for album songs
 int main() {
     int howMany = 1; // test with one album
     Album *albums = new Album[howMany];
