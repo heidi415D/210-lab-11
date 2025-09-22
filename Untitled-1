@@ -47,6 +47,7 @@ int main() {
     int howMany;
     cout << "How many albums do you want to enter? ";
     cin >> howMany;
+    cin.ignore(); // clear newline from input buffer
     
     Album *albums = new Album[howMany]; // dynamic array of albums
 
@@ -56,6 +57,27 @@ int main() {
         int songs;
 
         cout << "Enter album name: ";
-        getl
-    }
+        getline(cin, albumName); 
+        cout << "Enter artist name: ";
+        getline(cin, artistName);
+        cout << "How many songs in the album? ";
+        cin >> songs;
+        cin.ignore(); // clear newline from input buffer again
+
+        albums[i] = makeAlbum(albumName, artistName, songs);
 }
+
+    // display all albums
+    for (int i = 0; i < howMany; i++){
+        printAlbum(albums[i]);
+    }
+
+    // free memory
+    for (int i = 0; i < howMany; i++){
+        freeAlbum(albums[i]);
+    delete[] albums;
+    }
+    
+    cout << "All albums displayed and memory freed";
+    return 0;
+    }
