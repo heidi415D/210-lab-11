@@ -18,6 +18,20 @@ Playlist makePlaylist(string n, string c, int count){
     p.artist = c;
     p.songCount = count;
 
-    
+    // filling in song
+    for (int i = 0; i < count; i++){
+        cout << "Song" << (i + 1) << "by" << + c;
+    }
+
+}
+
+// function to print out playlist 
+void printPlaylist(Playlist &p){
+    cout << "Playlist: " << p.name << " by " << p.artist << endl;
+    for (int i = 0; i < p.songCount; i++){
+        cout << "   " << p.songs[i] << endl;
+
+    }
+
 
 }
