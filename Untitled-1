@@ -1,0 +1,23 @@
+#inlcude <iostream>
+#include <string>
+
+// Playlist system
+// Each playlist has a name, artist, and dynamic array of songs
+struct Playlist {
+    string name;   // playlist name
+    string artist; // playlist artist
+    string *songs; // dynamic array of songs
+    int songCount;
+};
+// allocate array
+    p.songs = new string[count];
+// Function to create a new playlist
+Playlist makePlaylist(string n, string c, int count){
+    Playlist p;
+    p.name = n;
+    p.artist = c;
+    p.songCount = count;
+
+    
+
+}
