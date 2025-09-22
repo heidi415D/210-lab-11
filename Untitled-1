@@ -36,14 +36,26 @@ void printAlbum(const Album &a){
     }
 }
 
-// free memory allocated for album songs
+// free memory allocated for album 
+void freeAlbum(Album &a){
+    delete[] a.songs;
+    a.songs = nullptr; // no dangling pointer!
+    a.songCount = 0;
+}
+      
 int main() {
-    int howMany = 1; // test with one album
-    Album *albums = new Album[howMany];
-
-    albums[0] = makeAlbum("Study Mix", "Frank Ocean", 3);
+    int howMany;
+    cout << "How many albums do you want to enter? ";
+    cin >> howMany;
     
+    Album *albums = new Album[howMany]; // dynamic array of albums
+
+    // get each album from user
     for (int i = 0; i < howMany; i++){
-        printAlbum(albums[i]);
+        string albumName, artistName;
+        int songs;
+
+        cout << "Enter album name: ";
+        getl
     }
 }
