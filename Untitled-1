@@ -1,37 +1,47 @@
-#inlcude <iostream>
+#include <iostream>
 #include <string>
+using namespace std;
 
-// Playlist system
-// Each playlist has a name, artist, and dynamic array of songs
-struct Playlist {
-    string name;   // playlist name
-    string artist; // playlist artist
+// Album system
+// Each album has a name, artist, and dynamic array of songs
+struct Album {
+    string name;   // album name
+    string artist; // album artist
     string *songs; // dynamic array of songs
     int songCount;
 };
-// allocate array
-    p.songs = new string[count];
-// Function to create a new playlist
-Playlist makePlaylist(string n, string c, int count){
-    Playlist p;
-    p.name = n;
-    p.artist = c;
-    p.songCount = count;
 
-    // filling in song
+// Function to create a new album
+Album makeAlbum(string n, string c, int count){
+    Album a;
+    a.name = n;
+    a.artist = c;
+    a.songCount = count;
+    a.songs = new string[count];
+
+    // filling in songs
     for (int i = 0; i < count; i++){
-        cout << "Song" << (i + 1) << "by" << + c;
+        cout << "Enter song " << (i + 1) << " by " << c << ": ";
+        getline(cin, a.songs[i]);
     }
-
+    return a;
 }
 
-// function to print out playlist 
-void printPlaylist(Playlist &p){
-    cout << "Playlist: " << p.name << " by " << p.artist << endl;
-    for (int i = 0; i < p.songCount; i++){
-        cout << "   " << p.songs[i] << endl;
-
+// function to print out album 
+void printAlbum(Album &a){
+    cout << "Album: " << a.name << " by " << a.artist << endl;
+    for (int i = 0; i < a.songCount; i++){
+        cout << "   " << a.songs[i] << endl;
     }
+}
 
+int main() {
+    int howMany = 1; // test with one album
+    Album *albums = new Album[howMany];
 
+    albums[0] = makeAlbum("Study Mix", "Frank Ocean", 3);
+    
+    for (int i = 0; i < howMany; i++){
+        printAlbum(albums[i]);
+    }
 }
